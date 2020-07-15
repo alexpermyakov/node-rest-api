@@ -11,7 +11,7 @@ export const getPlacesByName = async (q: string) => {
   }
 
   let result = await getPlaces(q);
-  redisClient.set(q, JSON.stringify(result));
+  redisClient.set(`search-${q}`, JSON.stringify(result));
   publish(result);
 
   return result;
